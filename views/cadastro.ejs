@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>Cadastro Pessoa</h1>
+
+    <button id="btncadastrar" type="button" class="btn btn-primary">Cadastrar</button>
+
+    <table class="table">
+        <thead>
+          <tr class="table-dark" >
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Endereco</th>
+            <th scope="col">Email</th>
+            <th scope="col">CPF</th>
+            <th scope="col">RG</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% dados.forEach((linha)=>{ %>
+                <!-- posso escrever html aqui -->
+                <tr>
+                    <th scope="row "><%= linha.id %></th>
+                    <td><%= linha.nome %></td>
+                    <td><%= linha.telefone %></td>
+                    <td><%= linha.endereco %></td>
+                    <td><%= linha.email %></td>
+                    <td><%= linha.cpf %></td>
+                    <td><%= linha.rg %></td>
+                    <td> 
+                        <button id="<%= linha.id %>" onclick="location.href='/modificar/<%= linha.id %>'" type="button" class="btn btn-warning">Modificar</button>
+                        <button id="<%= linha.id %>" onclick="location.href='/deletar/<%= linha.id %>'" type="button" class="btn btn-danger">Deletar</button>
+                    </td>
+                </tr>
+           <%})%>            
+                
+           <script>
+                window.addEventListener('load',()=>{
+                    btncadastrar = document.getElementById('btncadastrar')
+
+                    btncadastrar.addEventListener('click',()=>{
+                        window.location.href = '/form'
+                    })
+
+                })
+           </script>
+
+      </table>
+
+</body>
+</html>
